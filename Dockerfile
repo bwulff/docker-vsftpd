@@ -29,6 +29,8 @@ ENV XFERLOG_STD_FORMAT NO
 ENV LOG_STDOUT **Boolean**
 ENV FILE_OPEN_MODE 0666
 ENV LOCAL_UMASK 077
+ENV TLS_CERT cert.pem
+ENV TLS_KEY key.pem
 
 COPY vsftpd.conf /etc/vsftpd/
 COPY vsftpd_virtual /etc/pam.d/
@@ -42,6 +44,7 @@ RUN chmod +x /usr/sbin/update_users.sh
 
 VOLUME /home/vsftpd
 VOLUME /var/log/vsftpd
+VOLUME /etc/vsftpd/cert
 
 EXPOSE 20 21
 
